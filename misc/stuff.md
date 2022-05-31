@@ -1,7 +1,7 @@
 ### Run on cluster (example)
-sbatch ~/VCSG/general_scripts/cluster/run_on_cluster.sh curiosities_matching vcsg curiosities_matching.sh
-sbatch ~/NS-BART/src/ns_bart/CSBart/relation_attention/run_on_cluster.sh ns_bart train_bart.py
+sbatch ~/explicit_commonsense/src/relation_attention/experiment_bart/run_on_cluster.sh relation_bart train_qa_bart.py
 
+train_qa_bart
 ### transfer data (example)
 scp -r ~/Documents/Education/Thesis/code/old/articles_decomposition fm.vicente@ncluster:/home/fm.vicente/thesis_datasets/articles_decomposition
 

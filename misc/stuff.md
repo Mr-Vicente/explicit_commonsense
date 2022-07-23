@@ -18,7 +18,7 @@ jt -t theme-name
 conda activate [env_name]
 conda install -c anaconda ipykernel
 /opt/anaconda3/envs/[env_name]/bin/python3 -m ipykernel install --user --name=[env_name]
-
+python3 -m ipykernel install --user --name=relation_bart
 ### shh agent config
 # go to bash console
 eval `ssh-agent`

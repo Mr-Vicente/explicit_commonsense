@@ -1,0 +1,6 @@
+
+declare -a COMMONGEN_MODEL_NAMES=("/home/fm.vicente/data/models_weights/trained_models_3/facebook-bart-large_default_commongen_none_none_L-default_DS-default_wLearnEmb_2/checkpoint-2331" "kgbart" "/home/fm.vicente/data/models_weights/trained_models_2/facebook-bart-large_relations_commongen_conceptnet_none_L-default_DS-default_wLearnEmb_4/checkpoint-4653" "/home/fm.vicente/data/models_weights/trained_models_2/facebook-bart-large_relations_commongen_conceptnet_none_L-cp-rp-def_DS-default_wLearnEmb_7/checkpoint-4653" "/home/fm.vicente/data/models_weights/trained_models_3/facebook-bart-large_relations_commongen_conceptnet_none_L-default_DS-constraint_wExtraRels_wLearnEmb_5/checkpoint-3102")
+declare -a ABS_MODEL_NAMES=("/home/fm.vicente/data/models_weights/trained_models_3/facebook-bart-large_default_eli5-stackexchange_qa_conceptnet_none_L-default_DS-default_wLearnEmb_3/checkpoint-35567" "/home/fm.vicente/data/models_weights/trained_models_3/facebook-bart-large_relations_eli5-stackexchange_qa_conceptnet_none_L-default_DS-default_wLearnEmb_10/checkpoint-30804")
+
+python3 generate_hit_new.py --commongen_models_paths "${COMMONGEN_MODEL_NAMES[@]}" \
+                            --absqa_models_paths "${ABS_MODEL_NAMES[@]}"

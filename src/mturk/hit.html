@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<!-- You must include this JavaScript file -->
+<head>
+  <script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+  <style>
+      .red {
+        background-color:lightcoral;
+      }
+      .green {
+        background-color:darkseagreen;
+      }
+      .bold_ref{
+        background-color: lightblue;
+      }
+      table{
+        padding: 10px;
+      }
+      th
+      {
+        background-color: lightblue;
+        /*border-radius: 25px;*/
+      }
+      td 
+      {
+          width: 200px;
+          text-align: center; 
+          vertical-align: middle;
+          padding: 10px 20px;
+      }
+      hr {
+        border: 0;
+        border-top: medium double #CCC;
+        height: 1px;
+        overflow: visible;
+        padding: 0;
+        color: #CCC;
+        text-align: center;
+    }
+    ul.separator {
+      list-style: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    ul.separator li {
+      padding: .5em 0;
+      border-bottom: 1px solid #CCC;
+    }
+
+    ul.separator li:last-child {
+      border-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<crowd-form>
+  <h1>Commonsense Textual Generation Evaluation</h1>
+
+  <h3>Introduction (Welcome to this HIT!)</h3>
+  <p><strong>What is Commonsense? </strong>Commonsense is strongly bounded to what makes sense in the world, regarding humans' knowledge, conventions and our lovely ability to reason and deduce about events <br>
+    <strong>Example:</strong> if it's raining we might grab an umbrella to go outdoors (not to get wet): this is Commonsense Reasoning. 
+      <br><strong>Motivation: </strong>Machine emulations of language, however, have difficulties dealing with such natural human behaviour, therefore we produced some research to tackle this problem.</p>
+  <p> <strong>Your task:</strong> Follow the instructions and provide your input to each step task.</p>
+  <p><strong>Note:</strong> If you have some doubts, please check <strong>Further information</strong></p> 
+  
+      <full-instructions text="help">
+      <p>Read the task carefully and complete the task.</p>
+      <p>Choose the appropriate ratings and provide meaningful answers.</p>
+    </full-instructions>
+    <short-instructions>
+      <p>Provide ratings to generated sentences for the first 2 HIT steps;</p>
+      <p>For the 3 HIT step: Write a sentence using the concepts given (and others if you want), 
+      as long as the concepts given are used and the sentence makes sense;</p>
+      <p>step 4) Provide rating to question-answer pairs for the last HIT step;</p>
+    </short-instructions>
+
+    <crowd-instructions link-text="Further information" link-type="button">
+      <short-summary>
+          <p>We are evaluating the quality of textual generation, so we have prepared this HIT to access the Human Level Performance of Lnaguage Models.</p>
+      </short-summary>
+
+      <detailed-instructions>
+          <p><strong>Step 1)</strong> Read the sentences below and use the sliders below to indicate how rich in commonsense they are (1 = lacking commonsense, 5 = human-like sentence).</p>
+          <p><strong>Step 2)</strong> Read the sentences below and use the sliders below to indicate how descriptive they are (1 = not descriptive, 5 = interestingly descriptive).</p>
+          <p><strong>Step 3)</strong> Given some concepts, create a sentence which makes sense and uses all concepts (you can use other concepts as long as you use the ones mentioned).</p>
+          <p><strong>Step 4)</strong> Read the questions and the respective answers below and use the sliders below to indicate how reasonable they are, even if you don't know the answer (1 = not reasonable, 5 = is right/makes sense)</p>
+      </detailed-instructions>
+
+      <positive-example>
+          <h3><strong>Step 1)</strong> Model Sentence</h3>
+          <p>Dog is chasing a cat.</p>
+
+          <h3>Response (Ranking)</h3>
+          <p>5</p>
+      </positive-example>
+
+      <positive-example>
+          <h3><strong>Step 3)</strong> Concepts</h3>
+          <p>water, boat, bird</p>
+
+          <h3>Response</h3>
+          <p>Boat moves over water, while birds are singing.</p>
+      </positive-example>
+
+      <negative-example>
+          <h3><strong>Step 1)</strong> Model Sentence</h3>
+          <p>Dog buys a toy to a cat.</p>
+
+          <h3>Response (Ranking)</h3>
+          <p>5</p>
+          <span><strong>Why?</strong> Sintatically the sentence is correct, but makes no sense in the real world. Maybe the ranking should be a 1,2. </span>
+      </negative-example>
+      <negative-example>
+          <h3><strong>Step 3)</strong> Concepts</h3>
+          <p>water, boat, bird</p>
+
+          <h3>Response</h3>
+          <p>boat flies over the sky to scare birds.</p>
+          <span><strong>Why?</strong> Makes no sense and misses the concept [water]</span>
+      </negative-example>
+  </crowd-instructions>
+
+  <hr>
+  <p><strong>→ HIT Step 1:</strong></p>
+  <p>
+      <strong>Instructions: </strong>
+        Read the next <strong class="bold_ref">sentences</strong> below and use the sliders below to indicate how 
+        rich in commonsense they are (<span class="red">1 = lacking commonsense</span>, <span class="green">5 = human-like sentence</span>)
+  </p>
+  <table>
+      <tr>
+          <th style="width:25px;">Model</th>
+          <th style="width:600px;">Sentence</th>
+          <th>Rating</th>
+        </tr>
+        <tr>
+          <td style="width:25px;">a)</td>
+          <td style="width:600px;">${commonsense_model_0}</td>
+          <td><crowd-slider name="commonsense_rating_model_0" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">b)</td>
+          <td style="width:600px;">${commonsense_model_1}</td>
+          <td><crowd-slider name="commonsense_rating_model_1" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">c)</td>
+          <td style="width:600px;">${commonsense_model_2}</td>
+          <td><crowd-slider name="commonsense_rating_model_2" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">d)</td>
+          <td style="width:600px;">${commonsense_model_3}</td>
+          <td><crowd-slider name="commonsense_rating_model_3" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">e)</td>
+          <td style="width:600px;">${commonsense_model_4}</td>
+          <td><crowd-slider name="commonsense_rating_model_4" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+  </table>
+
+  <hr>
+  <p><strong>→ HIT Step 2:</strong></p>
+  <p>
+      <strong>Instructions: </strong>
+        Read the next <strong class="bold_ref">sentences</strong> below and use the sliders below to indicate how 
+        descriptive they are (<span class="red">1 = not descriptive</span>, <span class="green">5 = interestingly descriptive</span>, even if the sentence might not make sense)
+  </p>
+  <table>
+      <tr>
+          <th style="width:25px;">Model</th>
+          <th style="width:600px;">Sentence</th>
+          <th>Rating</th>
+        </tr>
+        <tr>
+          <td style="width:25px;">a)</td>
+          <td style="width:600px;">${commonsense_model_0}</td>
+          <td><crowd-slider name="descriptive_rating_model_0" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">b)</td>
+          <td style="width:600px;">${commonsense_model_1}</td>
+          <td><crowd-slider name="descriptive_rating_model_1" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">c)</td>
+          <td style="width:600px;">${commonsense_model_2}</td>
+          <td><crowd-slider name="descriptive_rating_model_2" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">d)</td>
+          <td style="width:600px;">${commonsense_model_3}</td>
+          <td><crowd-slider name="descriptive_rating_model_3" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+        <tr>
+          <td style="width:25px;">e)</td>
+          <td style="width:600px;">${commonsense_model_4}</td>
+          <td><crowd-slider name="descriptive_rating_model_4" min="0" max="5" required pin></crowd-slider></p></td>
+        </tr>
+  </table>
+
+  <hr>
+  <p><strong>→ HIT Step 3:</strong></p>
+  <p><strong>Instructions: </strong>Given some concepts, create a sentence which makes sense and uses all provided concepts <br>(you can use other concepts as long as you use the ones mentioned, you can also use plurals/singulars and different forms of verbs/nouns/adverbs provided)</p>
+  <table>
+    <tr>
+      <td>${step3_concepts}</td>
+      <td style="width:800px;"><crowd-input name="human_sentence" label="Write sentence using concepts..." required></crowd-input></td>
+    </tr>
+  </table>
+
+  <hr>
+  <p><strong>→ HIT Step 4:</strong></p>
+  <p>
+    <strong>Instructions: </strong>
+      Read the next <strong class="bold_ref">questions</strong> and their respective <strong class="bold_ref">answers</strong> below and use the sliders below to indicate how 
+      reasonable thay are, even if you might not know the answer (<span class="red">1 = not reasonable</span>, <span class="green">5 = is right/makes sense/might be right</span>).
+  </p>
+  <table>
+    <tr>
+        <th style="width:25px;">Model</th>
+        <th style="width:100px;">Question</th>
+        <th>Answer</th>
+        <th>Rating</th>
+      </tr>
+      <tr>
+        <td style="width:25px;">a)</td>
+        <td style="width:350px;">${absqa_model_q_0}</td>
+        <td style="width:600px;text-align: justify;">${absqa_model_a_0}</td>
+        <td><crowd-slider name="absqa_rating_model_0" min="0" max="5" required pin></crowd-slider></p></td>
+      </tr>
+      <tr>
+        <td style="width:25px;">b)</td>
+        <td>${absqa_model_q_1}</td>
+        <td style="width:600px;text-align: justify;">${absqa_model_a_1}</td>
+        <td><crowd-slider name="absqa_rating_model_1" min="0" max="5" required pin></crowd-slider></p></td>
+      </tr>
+</table>
+  <br>
+  <p><strong>Thank you!</strong></p>
+  <br>
+</crowd-form>
+<script>
+document.querySelector('crowd-form').onsubmit = function(e ) {
+    sliders = document.querySelectorAll('crowd-slider')
+    error_message = ""
+    for (const slider of sliders) {
+      if (slider.value == 0) {
+        error_message += "Submission Error: [sliders] - Sliders must be ranged between 1 and 5.\n"
+        break;
+      }
+    }
+    human_sentence = document.querySelector('crowd-input').value
+    console.log(human_sentence)
+    if (human_sentence.split(' ').length < 4){
+        error_message += "Submission Error: [sentence generation] - The sentence is not using all given concepts.";
+    }
+    if (error_message.length > 0){
+      e.preventDefault();
+      error_message+= "\nWe will know if you are just rushing.."
+      alert(error_message)
+    }
+}
+</script>
+</body>
+</html>

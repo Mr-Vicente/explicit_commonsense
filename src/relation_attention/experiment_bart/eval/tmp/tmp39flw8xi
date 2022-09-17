@@ -1,0 +1,23 @@
+[
+  {
+    "image_id": 0,
+    "test": "the sky is blue",
+    "refs": [
+      "the sky is red"
+    ]
+  },
+  {
+    "image_id": 1,
+    "test": "the cat is flying",
+    "refs": [
+      "the dog is swimming"
+    ]
+  },
+  {
+    "image_id": 2,
+    "test": "the sky is shiny",
+    "refs": [
+      "the sky is shining"
+    ]
+  }
+]

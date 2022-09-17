@@ -156,3 +156,7 @@ fabric.properties
 *.csv
 *.json
 *.txt
+*.jar
+*/tmp/*
+src/playground/.vector_cache/*
+*.jsonl

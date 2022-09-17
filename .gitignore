@@ -152,3 +152,7 @@ fabric.properties
 
 # Macos
 .DS_Store
+
+*.csv
+*.json
+*.txt
